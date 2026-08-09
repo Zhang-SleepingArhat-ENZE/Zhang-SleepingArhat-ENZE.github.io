@@ -1,0 +1,9 @@
+baseURL = 'https://Zhang-SleepingArhat-ENZE.github.io/'
+locale = "zh-CN"
+title = '沢のブログ'
+
+theme = "reimu"
+
+defaultContentLanguage = "zh-cn"
+
+

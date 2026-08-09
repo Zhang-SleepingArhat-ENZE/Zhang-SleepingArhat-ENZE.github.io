@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>沢のブログ</title>
+    <link>https://Zhang-SleepingArhat-ENZE.github.io/</link>
+    <description>Recent content from 沢のブログ</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    
+    <managingEditor>zhang@cysec.cs.retsumei.ac.jp (張恩澤)</managingEditor>
+    <webMaster>zhang@cysec.cs.retsumei.ac.jp (張恩澤)</webMaster>
+    
+    <copyright>本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！</copyright>
+    
+    <lastBuildDate>Mon, 01 Jan 0001 00:00:00 +0000</lastBuildDate>
+    
+    
+    <atom:link href="https://Zhang-SleepingArhat-ENZE.github.io/index.xml" rel="self" type="application/rss&#43;xml" />
+    
+
+    
+    
+
+    <item>
+      <title>blogtitle</title>
+      <link>https://Zhang-SleepingArhat-ENZE.github.io/post/mirror/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate>
+      <author>zhang@cysec.cs.retsumei.ac.jp (張恩澤)</author>
+      <guid>https://Zhang-SleepingArhat-ENZE.github.io/post/mirror/</guid>
+      <description>
+        <![CDATA[<h1>blogtitle</h1><p>作者：張恩澤（zhang@cysec.cs.retsumei.ac.jp）</p>
+        
+          <p>我看看怎么个事
+看来成功了呀
+!<img src="/images/Pasted%20image%2020260809100657.png" alt="Image Description"></p>
+        
+        <hr><p>本文0001-01-01首发于<a href='https://Zhang-SleepingArhat-ENZE.github.io/'>沢のブログ</a>，最后修改于0001-01-01</p>]]>
+      </description>
+      
+    </item>
+    
+  </channel>
+</rss>
