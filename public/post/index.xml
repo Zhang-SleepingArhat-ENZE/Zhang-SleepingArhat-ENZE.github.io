@@ -1,41 +1,38 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Posts on 沢のブログ</title>
-    <link>https://Zhang-SleepingArhat-ENZE.github.io/post/</link>
-    <description>Recent content from 沢のブログ</description>
-    <generator>Hugo</generator>
-    <language>zh-CN</language>
-    
-    <managingEditor>zhang@cysec.cs.retsumei.ac.jp (張恩澤)</managingEditor>
-    <webMaster>zhang@cysec.cs.retsumei.ac.jp (張恩澤)</webMaster>
-    
-    <copyright>本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！</copyright>
-    
-    
-    <atom:link href="https://Zhang-SleepingArhat-ENZE.github.io/post/index.xml" rel="self" type="application/rss&#43;xml" />
-    
-
-    
-    
-
-    <item>
-      <title>blogtitle</title>
-      <link>https://Zhang-SleepingArhat-ENZE.github.io/post/mirror/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate>
-      <author>zhang@cysec.cs.retsumei.ac.jp (張恩澤)</author>
-      <guid>https://Zhang-SleepingArhat-ENZE.github.io/post/mirror/</guid>
-      <description>
-        <![CDATA[<h1>blogtitle</h1><p>作者：張恩澤（zhang@cysec.cs.retsumei.ac.jp）</p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on 沢のブログ</title><link>https://Zhang-SleepingArhat-ENZE.github.io/post/</link><description>Recent content from 沢のブログ</description><generator>Hugo</generator><language>zh-CN</language><managingEditor>zhang@cysec.cs.retsumei.ac.jp (張恩澤)</managingEditor><webMaster>zhang@cysec.cs.retsumei.ac.jp (張恩澤)</webMaster><copyright>本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！</copyright><atom:link href="https://Zhang-SleepingArhat-ENZE.github.io/post/index.xml" rel="self" type="application/rss+xml"/><item><title>blogtitle</title><link>https://Zhang-SleepingArhat-ENZE.github.io/post/%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>zhang@cysec.cs.retsumei.ac.jp (張恩澤)</author><guid>https://Zhang-SleepingArhat-ENZE.github.io/post/%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/</guid><description>
+<![CDATA[<h1>blogtitle</h1><p>作者：張恩澤（zhang@cysec.cs.retsumei.ac.jp）</p>
         
-          <p>我看看怎么个事
+          <p>图片导入是个大问题
+我看看怎么个事
 看来成功了呀
-!<img src="/images/Pasted%20image%2020260809100657.png" alt="Image Description"></p>
+这需要用一个images.py程序自主搜索并复制到镜像库zzeblog里面：</p>
+<p>!<img src="/images/Pasted%20image%2020260809100657.png" alt="Image Description">
+让AI给我做了一个集成生成式人工智能与量子威胁模拟的密码安全分析平台，API接口什么的还没有放进来（本地端每次都要前后端都跑通一下，以后加了API尝试扔到github上
+blog的话现在已经初具雏形了，还要放一个音乐播放器，其他的问题的话就是还差一个分类栏没有解决。然后还差一个public了。
+!<img src="/images/Pasted%20image%2020260820232100.png" alt="Image Description"></p>
         
-        <hr><p>本文0001-01-01首发于<a href='https://Zhang-SleepingArhat-ENZE.github.io/'>沢のブログ</a>，最后修改于0001-01-01</p>]]>
-      </description>
-      
-    </item>
-    
-  </channel>
-</rss>
+        <hr><p>本文0001-01-01首发于<a href='https://Zhang-SleepingArhat-ENZE.github.io/'>沢のブログ</a>，最后修改于0001-01-01</p>]]></description></item><item><title/><link>https://Zhang-SleepingArhat-ENZE.github.io/post/%E6%96%B0%E9%AB%98%E4%B8%89%E5%AD%A6%E7%94%9F%E6%9A%91%E5%81%87%E5%A4%8D%E4%B9%A0%E8%A7%84%E5%88%92/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>zhang@cysec.cs.retsumei.ac.jp (張恩澤)</author><guid>https://Zhang-SleepingArhat-ENZE.github.io/post/%E6%96%B0%E9%AB%98%E4%B8%89%E5%AD%A6%E7%94%9F%E6%9A%91%E5%81%87%E5%A4%8D%E4%B9%A0%E8%A7%84%E5%88%92/</guid><description>
+<![CDATA[<h1></h1><p>作者：張恩澤（zhang@cysec.cs.retsumei.ac.jp）</p>
+        
+          <p>薄弱点：解三角形，解析几何，立体几何
+上课形式：根据我高中三年的笔记(基础知识点，题型整理，技巧与应试)和错题整理，针对所学板块进行系统讲解，我会在电脑上写板书和例题，需要您笔头勤快一些，跟上笔记内容，认真整理，清晰易懂，方便以后复习食用。
+{ 笔记为综合考量学校知识，考试需要，自己研究的一些数学书(××的奥秘系列，当时作业帮发行的解析几何技巧证明，现在这书应该绝版了)，以及常见易错点和自己考试中的错题归纳，以及网上和QQ群中一些大佬整理的技巧方法。}</p>
+<p>解三角形（4课时）
+第一节：正余弦定理，面积计算和求解范围问题
+第二节：平面向量，平面几何相关     第一节剩下问题（50分钟）第二节向量讲课（讲20分钟-25分钟+做题）
+第三，四节：重心，内心，垂心，外心相关问题，奔驰定理，斯库顿定理，张角定理，斯特瓦尔特定理，倍角定理   第二节剩余习题（100分钟）第三节（讲45分钟+8道题）
+第五节：定理讲解（20分钟）</p>
+<p>解析几何（7课时或8课时）
+第一节：直线，直线在平面中位置关系<br>
+第二节：圆，平面中位置关系
+第三节，第四节：椭圆，平面中位置关系，相关大题，一些技巧
+第五节：巩固三四节内容，双曲线，平面中位置关系
+第六节：抛物线，平面中位置关系
+第七节，第八节：综合大题与总结(较难，视情况可以先不上)</p>
+<p>立体几何(5课时)
+第一节：几何体计算与三视图&amp;&amp;外接球与内切球(八大模型)
+第二节：空间位置关系判断与空间角基础
+第三节：平行与垂直的证明
+第四节：空间向量与空间角
+第五节：二面角与综合实战</p>
+        
+        <hr><p>本文0001-01-01首发于<a href='https://Zhang-SleepingArhat-ENZE.github.io/'>沢のブログ</a>，最后修改于0001-01-01</p>]]></description></item></channel></rss>
