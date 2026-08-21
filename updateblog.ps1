@@ -1,4 +1,4 @@
-```powershell
+
 # PowerShell Script for Windows
 # Obsidian -> Hugo -> GitHub Pages
 
@@ -308,4 +308,3 @@ Write-Host "https://Zhang-SleepingArhat-ENZE.github.io"
 
 Write-Host ""
 Write-Host "Done!"
-```
