@@ -1,36 +1,105 @@
+# import os
+# import re
+# import shutil
+ 
+# # Paths (using raw strings to handle Windows backslashes correctly)
+# posts_dir = r"E:\zeblog\zeblog\content\post" 
+# attachments_dir = r"E:\HuaweiMoveData\Users\Administrator\Documents\Obsidian Vault\attachments"
+# static_images_dir = r"E:\zeblog\zeblog\static\images"
+
+# # Step 1: Process each markdown file in the posts directory
+# for filename in os.listdir(posts_dir):
+#     if filename.endswith(".md"):
+#         filepath = os.path.join(posts_dir, filename)
+        
+#         with open(filepath, "r", encoding="utf-8") as file:
+#             content = file.read()
+        
+#         # Step 2: Find all image links in the format ![Image Description](/images/Pasted%20image%20...%20.png)
+#         images = re.findall(r'\[\[([^]]*\.png)\]\]', content)
+        
+#         # Step 3: Replace image links and ensure URLs are correctly formatted
+#         for image in images:
+#             # Prepare the Markdown-compatible link with %20 replacing spaces
+#             markdown_image = f"![Image Description](/images/{image.replace(' ', '%20')})"
+#             content = content.replace(f"[[{image}]]", markdown_image)
+            
+#             # Step 4: Copy the image to the Hugo static/images directory if it exists
+#             image_source = os.path.join(attachments_dir, image)
+#             if os.path.exists(image_source):
+#                 shutil.copy(image_source, static_images_dir)
+
+#         # Step 5: Write the updated content back to the markdown file
+#         with open(filepath, "w", encoding="utf-8") as file:
+#             file.write(content)
+
+# print("Markdown files processed and images copied successfully.")
+
 import os
 import re
 import shutil
- 
-# Paths (using raw strings to handle Windows backslashes correctly)
+
+# Paths
 posts_dir = r"E:\zeblog\zeblog\content\post" 
 attachments_dir = r"E:\HuaweiMoveData\Users\Administrator\Documents\Obsidian Vault\attachments"
 static_images_dir = r"E:\zeblog\zeblog\static\images"
+
+# 确保目标目录存在
+os.makedirs(static_images_dir, exist_ok=True)
+
+# 统计
+total_copied = 0
+total_files = 0
 
 # Step 1: Process each markdown file in the posts directory
 for filename in os.listdir(posts_dir):
     if filename.endswith(".md"):
         filepath = os.path.join(posts_dir, filename)
+        total_files += 1
         
         with open(filepath, "r", encoding="utf-8") as file:
             content = file.read()
         
-        # Step 2: Find all image links in the format ![Image Description](/images/Pasted%20image%20...%20.png)
-        images = re.findall(r'\[\[([^]]*\.png)\]\]', content)
+        print(f"\n处理文件: {filename}")
         
-        # Step 3: Replace image links and ensure URLs are correctly formatted
+        # Step 2: 匹配 Obsidian 格式 ![[图片名.png|可选参数]]
+        # 匹配: ![[图片名.png]] 或 ![[图片名.png|宽度]]
+        images = re.findall(r'!\[\[([^\]|]+)(?:\|[^\]]*)?\]\]', content)
+        
+        if images:
+            print(f"找到 {len(images)} 张图片: {images}")
+        else:
+            print("未找到图片")
+            continue
+        
+        # Step 3: 替换为 Hugo 兼容格式
         for image in images:
-            # Prepare the Markdown-compatible link with %20 replacing spaces
-            markdown_image = f"![Image Description](/images/{image.replace(' ', '%20')})"
-            content = content.replace(f"[[{image}]]", markdown_image)
+            # 处理空格为 %20
+            image_url = image.replace(' ', '%20')
+            # 转换为标准 Markdown 格式
+            markdown_image = f"![{image}](/images/{image_url})"
             
-            # Step 4: Copy the image to the Hugo static/images directory if it exists
+            # 替换原格式（注意要匹配完整的 ![[...]] 格式）
+            # 匹配 ![[图片名.png]] 或 ![[图片名.png|宽度]]
+            pattern = r'!\[\[(' + re.escape(image) + r')(?:\|[^\]]*)?\]\]'
+            content = re.sub(pattern, markdown_image, content)
+            
+            # Step 4: 复制图片文件
             image_source = os.path.join(attachments_dir, image)
             if os.path.exists(image_source):
-                shutil.copy(image_source, static_images_dir)
-
-        # Step 5: Write the updated content back to the markdown file
+                dest_path = os.path.join(static_images_dir, image)
+                shutil.copy(image_source, dest_path)
+                total_copied += 1
+                print(f"  ✓ 复制: {image}")
+            else:
+                print(f"  ✗ 文件不存在: {image_source}")
+        
+        # Step 5: 写回文件
         with open(filepath, "w", encoding="utf-8") as file:
             file.write(content)
 
-print("Markdown files processed and images copied successfully.")
+print(f"\n{'='*50}")
+print(f"处理完成！")
+print(f"处理文件数: {total_files}")
+print(f"复制图片数: {total_copied}")
+print(f"图片目录: {static_images_dir}")
