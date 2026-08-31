@@ -60,49 +60,55 @@ for filename in os.listdir(posts_dir):
         
         print(f"\n处理文件: {filename}")
         
-        # 匹配 Obsidian 格式
-        images = re.findall(r'!\[\[([^\]|]+)(?:\|[^\]]*)?\]\]', content)
+        # 匹配 Obsidian 格式，捕获图片名和宽度参数
+        # ![[图片名.png|宽度]] 或 ![[图片名.png]]
+        images = re.findall(r'!\[\[([^\]|]+)(?:\|([^\]]*))?\]\]', content)
         
         if images:
-            print(f"找到 {len(images)} 张图片: {images}")
+            print(f"找到 {len(images)} 张图片")
+            for img, width in images:
+                print(f"  - {img} (宽度: {width if width else '默认'})")
         else:
             print("未找到图片")
             continue
         
-        for image in images:
+        for image, width_param in images:
+            # 处理 URL 编码
             image_url = image.replace(' ', '%20')
             
-            # ===== 选择一种格式 =====
+            # 根据是否有宽度参数生成不同的格式
+            if width_param and width_param.isdigit():
+                # 有宽度参数：使用 figure shortcode 并指定宽度
+                markdown_image = f'\n{{{{< figure src="/images/{image_url}" alt="{image}" width="{width_param}" >}}}}\n'
+            else:
+                # 无宽度参数：使用标准 Markdown 格式（如果 unsafe=true）或 figure shortcode
+                # 方式1: 标准 Markdown（需要 unsafe=true）
+                # markdown_image = f"\n![{image}](/images/{image_url})\n"
+                
+                # 方式2: figure shortcode（不需要 unsafe）
+                markdown_image = f'\n{{{{< figure src="/images/{image_url}" alt="{image}" >}}}}\n'
             
-            # 方式A: 使用 figure shortcode（推荐，最可靠）
-            markdown_image = f'\n{{{{< figure src="/images/{image_url}" alt="{image}" >}}}}\n'
-            
-            # 方式B: 使用 HTML img 标签
-            # markdown_image = f'\n<img src="/images/{image_url}" alt="{image}">\n'
-            
-            # 方式C: 使用带样式的 HTML（可控制大小）
-            # markdown_image = f'\n<img src="/images/{image_url}" alt="{image}" style="max-width:100%; height:auto;">\n'
-            
-            # 方式D: 标准 Markdown（需要 unsafe=true）
-            # markdown_image = f"![{image}](/images/{image_url})"
-            # =========================
-            
+            # 替换原格式
             pattern = r'!\[\[(' + re.escape(image) + r')(?:\|[^\]]*)?\]\]'
             content = re.sub(pattern, markdown_image, content)
             
-            # 复制图片
+            # 复制图片文件
             image_source = os.path.join(attachments_dir, image)
             if os.path.exists(image_source):
                 dest_path = os.path.join(static_images_dir, image)
                 shutil.copy(image_source, dest_path)
                 total_copied += 1
-                print(f"  ✓ 复制: {image}")
+                if width_param:
+                    print(f"  ✓ 复制: {image} (宽度: {width_param}px)")
+                else:
+                    print(f"  ✓ 复制: {image} (原始尺寸)")
             else:
                 print(f"  ✗ 文件不存在: {image_source}")
         
-        # 清理多余空行
+        # 清理多余的空行
         content = re.sub(r'\n{3,}', '\n\n', content)
         
+        # 写回文件
         with open(filepath, "w", encoding="utf-8") as file:
             file.write(content)
 
