@@ -47,11 +47,9 @@ static_images_dir = r"E:\zeblog\zeblog\static\images"
 # 确保目标目录存在
 os.makedirs(static_images_dir, exist_ok=True)
 
-# 统计
 total_copied = 0
 total_files = 0
 
-# Step 1: Process each markdown file in the posts directory
 for filename in os.listdir(posts_dir):
     if filename.endswith(".md"):
         filepath = os.path.join(posts_dir, filename)
@@ -62,8 +60,7 @@ for filename in os.listdir(posts_dir):
         
         print(f"\n处理文件: {filename}")
         
-        # Step 2: 匹配 Obsidian 格式 ![[图片名.png|可选参数]]
-        # 匹配: ![[图片名.png]] 或 ![[图片名.png|宽度]]
+        # 匹配 Obsidian 格式
         images = re.findall(r'!\[\[([^\]|]+)(?:\|[^\]]*)?\]\]', content)
         
         if images:
@@ -72,19 +69,28 @@ for filename in os.listdir(posts_dir):
             print("未找到图片")
             continue
         
-        # Step 3: 替换为 Hugo 兼容格式
         for image in images:
-            # 处理空格为 %20
             image_url = image.replace(' ', '%20')
-            # 转换为标准 Markdown 格式
-            markdown_image = f"![{image}](/images/{image_url})"
             
-            # 替换原格式（注意要匹配完整的 ![[...]] 格式）
-            # 匹配 ![[图片名.png]] 或 ![[图片名.png|宽度]]
+            # ===== 选择一种格式 =====
+            
+            # 方式A: 使用 figure shortcode（推荐，最可靠）
+            markdown_image = f'\n{{{{< figure src="/images/{image_url}" alt="{image}" >}}}}\n'
+            
+            # 方式B: 使用 HTML img 标签
+            # markdown_image = f'\n<img src="/images/{image_url}" alt="{image}">\n'
+            
+            # 方式C: 使用带样式的 HTML（可控制大小）
+            # markdown_image = f'\n<img src="/images/{image_url}" alt="{image}" style="max-width:100%; height:auto;">\n'
+            
+            # 方式D: 标准 Markdown（需要 unsafe=true）
+            # markdown_image = f"![{image}](/images/{image_url})"
+            # =========================
+            
             pattern = r'!\[\[(' + re.escape(image) + r')(?:\|[^\]]*)?\]\]'
             content = re.sub(pattern, markdown_image, content)
             
-            # Step 4: 复制图片文件
+            # 复制图片
             image_source = os.path.join(attachments_dir, image)
             if os.path.exists(image_source):
                 dest_path = os.path.join(static_images_dir, image)
@@ -94,7 +100,9 @@ for filename in os.listdir(posts_dir):
             else:
                 print(f"  ✗ 文件不存在: {image_source}")
         
-        # Step 5: 写回文件
+        # 清理多余空行
+        content = re.sub(r'\n{3,}', '\n\n', content)
+        
         with open(filepath, "w", encoding="utf-8") as file:
             file.write(content)
 
